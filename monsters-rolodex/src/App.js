@@ -9,7 +9,7 @@ class App extends Component {
     //inşaatçi
     super();
     this.state = {
-      name: "Yihua",
+      name: "Yihua", //isim bilgisi
     };
   }
 
