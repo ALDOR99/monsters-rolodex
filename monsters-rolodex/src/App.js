@@ -8,7 +8,7 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
 
   constructor() {
-    //inşaatçi
+    //inşaatçi // yapıcı metod
     super();
     this.state = {
       monsters: [],
@@ -37,6 +37,7 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
 
   render() {
+    // Render ne gösterileceğini belirler. Kullanıcının arayüzünün ne olacağını belirler.
     return (
       <div className="App">
         {
