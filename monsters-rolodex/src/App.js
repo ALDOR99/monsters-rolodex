@@ -13,13 +13,14 @@ class App extends Component {
     this.state = {
       monsters: [],
     };
+    console.log("constructor");
   }
 
   //------------------------------------------------------------------------------------------------------------------
 
   componentDidMount() {
     //[yaşam döngüsü yöntemi  = lifecycle method]
-
+    console.log("componentDidMount");
     fetch("https://jsonplaceholder.typicode.com/users") //Jsonu alıyorum ,[ fetch = gidip getirmek ]
       .then((response) => response.json())
       .then((users) =>
@@ -37,9 +38,18 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
 
   render() {
+    console.log("render");
     // Render ne gösterileceğini belirler. Kullanıcının arayüzünün ne olacağını belirler.
     return (
       <div className="App">
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters"
+          onChange={(event) => {
+            console.log(event.target.value);
+          }}
+        />
         {
           //dizi yönetimi "map" = dizinin içinde,soldan sağa doğru her bir öğe üzerinde,
           //yineleme yapmamızı sağlayan bir yöntemdir.Ve size yeni bir dizi ,geriye verir.
@@ -51,6 +61,7 @@ class App extends Component {
             ); //monster parametresini geriye return et, h etiketi içerisinde
           })
         }
+        <button onClick></button>
       </div>
     );
   }
