@@ -48,6 +48,18 @@ class App extends Component {
           placeholder="search monsters"
           onChange={(event) => {
             console.log(event.target.value);
+
+            const searchString = event.target.value.toLowerCase(); //toLowerCase ,tüm diziler üzerinde ,hepsini küçük harfe dönüştüren bir yöntemdir.
+
+            const filteredMonsters = this.state.monsters.filter((monster) => {
+              return monster.name.toLowerCase().includes(searchString);
+            });
+
+            this.setState(() => {
+              return {
+                monsters: filteredMonsters,
+              };
+            });
           }}
         />
         {
