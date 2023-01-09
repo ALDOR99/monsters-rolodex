@@ -1,5 +1,6 @@
 import { Component } from "react";
-import logo from "./logo.svg";
+import CardList from "./components/card-list/card-list.component";
+
 import "./App.css";
 
 //--------------------------------------------------------------------
@@ -74,7 +75,7 @@ class App extends Component {
           placeholder="search monsters"
           onChange={this.onSearchChange}
         />
-        {
+        {/* {
           //dizi yönetimi "map" = dizinin içinde,soldan sağa doğru her bir öğe üzerinde,
           //yineleme yapmamızı sağlayan bir yöntemdir.Ve size yeni bir dizi ,geriye verir.
           filteredMonsters.map((monster) => {
@@ -84,7 +85,8 @@ class App extends Component {
               </div>
             ); //monster parametresini geriye return et, h etiketi içerisinde
           })
-        }
+        } */}
+        <CardList />
         <button onClick></button>
       </div>
     );
