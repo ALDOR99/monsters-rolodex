@@ -10,31 +10,27 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
 
   constructor() {
+    // app.js çalıştırıldığında ilk olarak bu method başlatılır,ardından render
     //inşaatçi // yapıcı metod
     super();
     this.state = {
       monsters: [],
       searchField: "",
     };
-    console.log("constructor");
   }
 
   //------------------------------------------------------------------------------------------------------------------
 
   componentDidMount() {
     //[yaşam döngüsü yöntemi  = lifecycle method]
-    console.log("componentDidMount");
+
     fetch("https://jsonplaceholder.typicode.com/users") //Jsonu alıyorum ,[ fetch = gidip getirmek ]
       .then((response) => response.json())
       .then((users) =>
-        this.setState(
-          () => {
-            return { monsters: users };
-          },
-          () => {
-            console.log(this.state);
-          }
-        )
+        this.setState(() => {
+          //setState her çağrıldığında ,render tekrar çağrılır
+          return { monsters: users };
+        })
       );
   }
 
@@ -55,9 +51,8 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
 
   render() {
-    console.log("render");
     // Render ne gösterileceğini belirler. Kullanıcının arayüzünün ne olacağını belirler.
-
+    console.log("render from appJs");
     //------------------------------------------------------------
     const { monsters, searchField } = this.state; // iki büyük optimizasyon yaptım
     const { onSeachChange } = this;
@@ -75,18 +70,9 @@ class App extends Component {
           placeholder="search monsters"
           onChange={this.onSearchChange}
         />
-        {/* {
-          //dizi yönetimi "map" = dizinin içinde,soldan sağa doğru her bir öğe üzerinde,
-          //yineleme yapmamızı sağlayan bir yöntemdir.Ve size yeni bir dizi ,geriye verir.
-          filteredMonsters.map((monster) => {
-            return (
-              <div key={monster.id}>
-                <h1>{monster.name}</h1>
-              </div>
-            ); //monster parametresini geriye return et, h etiketi içerisinde
-          })
-        } */}
-        <CardList />
+
+        <CardList monsters={filteredMonsters} />
+
         <button onClick></button>
       </div>
     );
