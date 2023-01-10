@@ -1,6 +1,6 @@
 import { Component } from "react";
 import CardList from "./components/card-list/card-list.component";
-
+import SearchBox from "./components/search-box/search-box.component";
 import "./App.css";
 
 //--------------------------------------------------------------------
@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       monsters: [],
-      searchField: "",
+      searchField: "", //Bu arama alanı metni değişiklik üzerine.
     };
   }
 
@@ -55,22 +55,21 @@ class App extends Component {
     console.log("render from appJs");
     //------------------------------------------------------------
     const { monsters, searchField } = this.state; // iki büyük optimizasyon yaptım
-    const { onSeachChange } = this;
+    const { onSearchChange } = this;
     //------------------------------------------------------------
 
     const filteredMonsters = monsters.filter((monster) => {
+      // Canavarlarımızı arama alanından filtreliyoruz
       return monster.name.toLowerCase().includes(searchField);
     });
 
     return (
       <div className="App">
-        <input
+        <SearchBox
           className="search-box"
-          type="search"
-          placeholder="search monsters"
-          onChange={this.onSearchChange}
+          onChangeHandler={onSearchChange}
+          placeholder={"search monsters"}
         />
-
         <CardList monsters={filteredMonsters} />
 
         <button onClick></button>
