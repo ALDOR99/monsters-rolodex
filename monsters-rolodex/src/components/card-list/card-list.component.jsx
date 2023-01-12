@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./card-list.styles.css";
+import Card from "../card/card.component";
 
 //-----------------------------------------------------------
 
@@ -8,7 +9,6 @@ class CardList extends Component {
     //----------------------------------------------------
 
     console.log(this.props.monsters);
-    console.log("render from Cardlist");
 
     //----------------------------------------------------
 
@@ -19,20 +19,7 @@ class CardList extends Component {
     return (
       <div className="card-list">
         {monsters.map((monster) => {
-          const { name, email, id } = monster; // Küçük bir optimizasyon
-
-          return (
-            <div key={id} className="card-container">
-              <img
-                alt={`monster ${name}`}
-                src={`https://robohash.org/${monster.id}?set=set2&size=180x180`}
-              />
-
-              <h2>{name}</h2>
-
-              <p>{email}</p>
-            </div>
-          );
+          return <Card monster={monster} />;
         })}
       </div>
     ); // kapsül içinde birden fazla ana div olamaz
